@@ -1,0 +1,23 @@
+{
+  "name": "dreamstudio-wrapper",
+  "version": "1.0.0",
+  "description": "This is a wrapper for the DreamStudio API, which used grpc. I found it difficult to use, so I made this wrapper to make it easier to use.",
+  "main": "lib.js",
+  "scripts": {
+    "dev": "ts-node testing.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@improbable-eng/grpc-web": "^0.15.0",
+    "@improbable-eng/grpc-web-node-http-transport": "^0.15.0",
+    "google-protobuf": "^3.21.2",
+    "grpc": "^1.24.11",
+    "sharp": "^0.31.3",
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "@types/sharp": "^0.31.1"
+  }
+}
