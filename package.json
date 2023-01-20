@@ -1,6 +1,6 @@
 {
   "name": "dreamstudio-wrapper",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "This is a wrapper for the DreamStudio API, which used grpc. I found it difficult to use, so I made this wrapper to make it easier to use.",
   "main": "lib.js",
   "scripts": {
