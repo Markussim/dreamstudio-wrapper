@@ -17,12 +17,12 @@ class Generator {
 
   /**
    *
-   * @param token Your dream studio API key
-   * @param width The width of the image to generate
-   * @param height The height of the image to generate
-   * @param steps The number of steps to use for the image generation, more steps will take longer and produce a higher quality image
-   * @param cfg The CFG scale to use for the image generation
-   * @param seed The seed to use for the image generation, if not provided a random seed will be used
+   * @param setup.token Your dream studio API key
+   * @param setup.width The width of the image to generate
+   * @param setup.height The height of the image to generate
+   * @param setup.steps The number of steps to use for the image generation, more steps will take longer and produce a higher quality image
+   * @param setup.cfg The CFG scale to use for the image generation
+   * @param setup.seed The seed to use for the image generation, if not provided a random seed will be used
    */
   constructor(setup: {
     token: string;
