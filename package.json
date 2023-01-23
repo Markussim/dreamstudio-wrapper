@@ -1,12 +1,14 @@
 {
   "name": "dreamstudio-wrapper",
-  "version": "1.0.1",
+  "version": "1.0.20",
   "description": "This is a wrapper for the DreamStudio API, which used grpc. I found it difficult to use, so I made this wrapper to make it easier to use.",
-  "main": "lib.ts",
+  "main": "dist/lib.js",
+  "types": "dist/lib.d.ts",
   "keywords": [],
   "author": "",
   "scripts": {
-    "start": "ts-node hejsan.ts"
+    "start": "ts-node hejsan.ts",
+    "build": "tsc"
   },
   "license": "ISC",
   "dependencies": {
