@@ -6,6 +6,20 @@ grpc.setDefaultTransport(NodeHttpTransport());
 import GenerationService from "./generation/generation_pb_service";
 import Generation from "./generation/generation_pb";
 
+type GeneratorOptions = {
+  token: string;
+  width: number;
+  height: number;
+  steps: number;
+  cfg: number;
+  seed?: number;
+};
+
+type GeneratedImage = {
+  image: Buffer;
+  seed: number;
+};
+
 class Generator {
   private token: string;
   private imageParams: Generation.ImageParameters;
@@ -24,14 +38,7 @@ class Generator {
    * @param setup.cfg The CFG scale to use for the image generation
    * @param setup.seed The seed to use for the image generation, if not provided a random seed will be used
    */
-  constructor(setup: {
-    token: string;
-    width: number;
-    height: number;
-    steps: number;
-    cfg: number;
-    seed?: number;
-  }) {
+  constructor(setup: GeneratorOptions) {
     this.imageParams = new Generation.ImageParameters();
     this.imageParams.setWidth(setup.width);
     this.imageParams.setHeight(setup.height);
@@ -73,7 +80,7 @@ class Generator {
    * @param prompt The prompt to use for the image generation
    * @returns A buffer containing the image data
    */
-  public async generateImage(prompt: string): Promise<Buffer> {
+  public async generateImage(prompt: string): Promise<GeneratedImage> {
     const promptText = new Generation.Prompt();
     promptText.setText(prompt);
 
@@ -108,7 +115,10 @@ class Generator {
             return;
 
           // You can convert the raw binary into a base64 string
-          resolve(Buffer.from(artifact.getBinary()));
+          resolve({
+            image: Buffer.from(artifact.getBinary()),
+            seed: this.imageParams.getSeedList()[0],
+          });
         });
       });
 
